@@ -1,4 +1,5 @@
-﻿using Hospital.UserControls;
+﻿using Hospital.Pages;
+using Hospital.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,18 +41,21 @@ namespace Hospital
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserControl usc = null;
-            GridMain.Children.Clear();
+            Page page = null;
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    usc = new UserControlHome();
-                    GridMain.Children.Add(usc);
+                    page = new UserDatailsPage();
+                    Main.Content = page;
                     break;
                 case "ItemCreate":
-                    usc = new UserControlCreate();
-                    GridMain.Children.Add(usc);
+                    page = new CreatePage();
+                    Main.Content = page;
+                    break;
+                case "ItemList":
+                    page = new UserListPage();
+                    Main.Content = page;
                     break;
                 default:
                     break;
